@@ -31,7 +31,7 @@ def receive():
     if request.method == 'POST':
         data = json.loads(request.data)
         text = data['inboundSMSMessageNotification']['inboundSMSMessage']
-        return process(text)
+        process(text)
     return redirect('/')
 
 
