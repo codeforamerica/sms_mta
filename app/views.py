@@ -32,6 +32,7 @@ def receive():
         data = json.loads(request.data)
         text = data['inboundSMSMessageNotification']['inboundSMSMessage']
         process(text)
+        return "Sucess!"
     return redirect('/')
 
 
