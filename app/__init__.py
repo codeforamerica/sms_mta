@@ -8,14 +8,12 @@ This file creates your application.
 
 from flask import Flask
 from . import settings
-from .sms import sms
 from .views import views
 
 
 app = Flask(__name__, static_folder='../static',
             template_folder='../templates')
 app.config.from_object(settings)
-app.register_blueprint(sms)
 app.register_blueprint(views)
 
 
