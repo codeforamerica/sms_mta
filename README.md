@@ -4,9 +4,9 @@ SMS MTA
 A work-in-progress SMS texting application to get bus times based off of
 the Macon Transit Authority's schedule.
 
-Since no real-time bus or individual quarter-mile stop data is currently
-available, and the MTA has a 90% on-time percentage, the app will use
-pre-existing schedules from [the MTA's
+Since no real-time bus data or individual quarter-mile stop data is
+currently available, and the MTA has a 90% on-time percentage, the app
+will use pre-existing schedules from [the MTA's
 website](http://www.mta-mac.com/schedules.html).
 
 
