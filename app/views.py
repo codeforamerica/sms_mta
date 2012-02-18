@@ -6,9 +6,8 @@ application.
 """
 
 import simplejson as json
-import requests as req
-
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, redirect, request
+from .sms import process
 
 views = Blueprint('views', __name__, static_folder='../static',
                   template_folder='../templates')
@@ -27,13 +26,13 @@ def about():
 
 
 @views.route('/sms', methods=['POST'])
-def sms():
-    """Respond to POST data from SMSified."""
+def receive():
+    """Respond to POST data received from SMSified."""
     if request.method == 'POST':
         data = json.loads(request.data)
-        message = data['inboundSMSMessageNotification']['inboundSMSMessage']
-        print message
-    return 'hello'
+        text = data['inboundSMSMessageNotification']['inboundSMSMessage']
+        return process(text)
+    return redirect('/')
 
 
 # The functions below should be applicable to all Flask apps.
