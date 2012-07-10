@@ -16,12 +16,28 @@ def authentication():
     return (username, password)
 
 
+def bus(message):
+    """Find the bus info associated with a given address."""
+    message = message.lower().strip()
+    transit = "http://transit2me.herokuapp.com/stopnear"
+    if 'help' in message:
+        reply = "Text your address to get estimated bus times."
+    else:
+        try:
+            response = req.get(transit, params={'address':message})
+        except:
+            reply = "Hmm, there seems to be an error with that address."
+        else:
+            reply = response.text
+    return reply
+
+
 def process(text):
     """Process an incoming text message."""
     address = text['senderAddress'].lstrip('tel:+')
     message = text['message']
-    response = "Why hello there %s." % (address)
-    return respond(address, response)
+    info = bus(message)
+    return respond(address, info)
 
 
 def respond(number, message):

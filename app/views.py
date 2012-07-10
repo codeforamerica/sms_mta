@@ -13,27 +13,14 @@ views = Blueprint('views', __name__, static_folder='../static',
                   template_folder='../templates')
 
 
-@views.route('/')
-def home():
-    """Render website's home page."""
-    return render_template('home.html')
-
-
-@views.route('/about/')
-def about():
-    """Render the website's about page."""
-    return render_template('about.html')
-
-
-@views.route('/sms', methods=['POST'])
+@views.route('/', methods=['POST'])
 def receive():
     """Respond to POST data received from SMSified."""
     if request.method == 'POST':
         data = json.loads(request.data)
         text = data['inboundSMSMessageNotification']['inboundSMSMessage']
         process(text)
-        return "Success!"
-    return redirect('/')
+    return "Success!"
 
 
 # The functions below should be applicable to all Flask apps.
