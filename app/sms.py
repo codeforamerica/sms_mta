@@ -24,9 +24,8 @@ def bus(message):
         reply = ("Text your address to get estimated bus times. "
                  "Example: 1602 Montpelier Ave")
     else:
-        try:
-            response = req.get(transit, params={'address':message})
-        except:
+        response = req.get(transit, params={'address':message})
+        if response.status_code == 500:
             reply = ("Hmm, there seems to be an error with that address. "
                      "Text HELP for example usage.")
         else:
