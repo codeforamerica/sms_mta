@@ -21,12 +21,14 @@ def bus(message):
     message = message.lower().strip()
     transit = "http://transit2me.herokuapp.com/stopnear"
     if 'help' in message:
-        reply = "Text your address to get estimated bus times."
+        reply = ("Text your address to get estimated bus times. "
+                 "Example: 1602 Montpelier Ave")
     else:
         try:
             response = req.get(transit, params={'address':message})
         except:
-            reply = "Hmm, there seems to be an error with that address."
+            reply = ("Hmm, there seems to be an error with that address. "
+                     "Text HELP for example usage.")
         else:
             reply = response.text
     return reply
