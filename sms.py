@@ -14,8 +14,8 @@ def authentication():
     Get SMSified username and password authentication from environment
     variables.
     """
-    username = os.environ['SMS_USER']
-    password = os.environ['SMS_PASS']
+    username = os.environ.get('SMS_USER', '')
+    password = os.environ.get('SMS_PASS', '')
     return (username, password)
 
 
