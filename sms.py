@@ -38,8 +38,8 @@ def bus(message):
             inbound = data['routes'][0]['intime']
             outbound = data['routes'][0]['outtime']
             # Then format the times.
-            inbound = format_time(inbound)
-            outbound = format_time(outbound)
+            # inbound = format_time(inbound)
+            # outbound = format_time(outbound)
             # And, send the message.
             reply = "STOP: %s. INBOUND: %s. OUTBOUND: %s." % (stop, inbound, outbound)
     return reply
