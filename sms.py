@@ -35,7 +35,7 @@ def bus(message):
             stop = data['name']
             inbound = data['routes'][0]['intime']
             outbound = data['routes'][0]['outtime']
-            reply = "Stop: %s. INBOUND: %s OUTBOUND: %s" % (stop, inbound, outbound)
+            reply = "STOP: %s. INBOUND: %s OUTBOUND: %s" % (stop, inbound, outbound)
     return reply
 
 
