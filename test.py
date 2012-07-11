@@ -8,7 +8,6 @@ from unittest import TestCase, main
 from mock import Mock, MagicMock
 
 import sms
-from sms import format_time
 
 
 class Authentication(TestCase):
@@ -53,11 +52,11 @@ class FormatTime(TestCase):
         sms.time = datetime.time
 
     def test_morning_time(self):
-        formatted = format_time("08:22")
+        formatted = sms.format_time("08:22")
         self.assertEqual(formatted, "08:22 AM")
 
     def test_afternoon_time(self):
-        formatted = format_time("18:27")
+        formatted = sms.format_time("18:27")
         self.assertEqual(formatted, "06:27 PM")
 
 
