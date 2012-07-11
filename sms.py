@@ -41,7 +41,7 @@ def bus(message):
             inbound = format_time(inbound)
             outbound = format_time(outbound)
             # And, send the message.
-            reply = "STOP: %s. INBOUND: %s. OUTBOUND: %s." % (stop, inbound, outbound)
+            reply = "STOP: %s INBOUND: %s OUTBOUND: %s" % (stop, inbound, outbound)
     return reply
 
 
