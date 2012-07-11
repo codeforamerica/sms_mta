@@ -22,7 +22,8 @@ def bus(message):
     transit = "http://transit2me.herokuapp.com/stopnear"
     if 'help' in message:
         reply = ("Text your address to get estimated bus times. "
-                 "Example: 1602 Montpelier Ave")
+                 "Example: 1602 Montpelier Ave. "
+                 "You can also call the MTA at: 478-803-2505")
     else:
         response = req.get(transit, params={'address':message})
         if response.status_code == 500:
