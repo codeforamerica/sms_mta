@@ -1,6 +1,8 @@
 """SMSified logic for the MTA application."""
 
 import os
+from datetime import time
+
 import requests as req
 import simplejson as json
 
@@ -35,8 +37,18 @@ def bus(message):
             stop = data['name']
             inbound = data['routes'][0]['intime']
             outbound = data['routes'][0]['outtime']
-            reply = "STOP: %s. INBOUND: %s OUTBOUND: %s" % (stop, inbound, outbound)
+            # Then format the times.
+            inbound = format_time(inbound)
+            outbound = format_time(outbound)
+            # And, send the message.
+            reply = "STOP: %s. INBOUND: %s. OUTBOUND: %s." % (stop, inbound, outbound)
     return reply
+
+
+def format_time(time_str):
+    """Format the bus time."""
+    times = time_str.split(":")
+    return time(*times).strtime("%I:%m %p")
 
 
 def process(text):
