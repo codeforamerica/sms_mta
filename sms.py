@@ -31,6 +31,7 @@ def bus(message):
                      "Text HELP for example usage.")
         else:
             data = response.json
+            print data
             stop = data['name']
             inbound = data['routes'][0]['intime']
             outbound = data['routes'][0]['outtime']
