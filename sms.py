@@ -2,6 +2,7 @@
 
 import os
 import requests as req
+import simplejson as json
 
 SEND = "https://api.smsified.com/v1/smsmessaging/outbound/4782467242/requests"
 
@@ -30,8 +31,7 @@ def bus(message):
             reply = ("Hmm, there seems to be an error with that address. "
                      "Text HELP for example usage.")
         else:
-            data = response.json
-            print data
+            data = json.loads(response.text)
             stop = data['name']
             inbound = data['routes'][0]['intime']
             outbound = data['routes'][0]['outtime']
