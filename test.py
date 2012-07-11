@@ -3,11 +3,12 @@
 """Tests for the Macon Transit Authority's SMS application."""
 
 import os
+import datetime
 from unittest import TestCase, main
 from mock import Mock, MagicMock
 
-import app
 import sms
+from sms import format_time
 
 
 class Authentication(TestCase):
@@ -43,6 +44,21 @@ class Bus(TestCase):
         address = "1602 Montpelier Ave"
         sms.bus(address)
         self.assertTrue(self.get.called)
+
+
+class FormatTime(TestCase):
+
+    def setUp(self):
+        # Cancel out any mocks
+        sms.time = datetime.time
+
+    def test_morning_time(self):
+        formatted = format_time("08:22")
+        self.assertEqual(formatted, "08:22 AM")
+
+    def test_afternoon_time(self):
+        formatted = format_time("18:27")
+        self.assertEqual(formatted, "06:27 PM")
 
 
 if __name__ == '__main__':
