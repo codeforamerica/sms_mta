@@ -47,6 +47,9 @@ def bus(message):
 
 def format_time(time_str):
     """Format the bus time."""
+    # Check to see if doesn't exist.
+    if time_str == "NONE":
+        return time_str
     times = [int(t) for t in time_str.split(":")]
     return time(*times).strftime("%I:%M %p")
 
